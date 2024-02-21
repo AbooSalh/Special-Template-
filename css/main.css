@@ -1,3 +1,6 @@
+:root {
+  --main-color: #ff9800;
+}
 * {
   font-family: "Open Sans", sans-serif;
   box-sizing: border-box;
@@ -32,13 +35,40 @@
   color: #fff;
 }
 .landing .header .logo {
-    font-size: 20px;
-    font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
 }
 .landing .header ul {
   display: flex;
 }
 .landing .header ul li {
-    margin-left: 20px;
+  /* margin-left: 20px; */
+}
+.landing .header ul li a {
+  color: white;
+  padding: 10px 20px;
+}
+.landing .header ul li a:hover {
+  color: var(--main-color);
+  transition: color 0.3s;
+}
+.landing .intro-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  color: #fff;
+  text-align: center;
+}
+.landing .intro-text span {
+  color: var(--main-color);
+}
+.landing .intro-text h1 {
+  font-size: 40px;
+}
+.landing .intro-text p {
+  line-height: 1.6;
+  font-size: 20px;
 }
 /* end landing  */
