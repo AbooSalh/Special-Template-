@@ -9,10 +9,5 @@ Special Template with pure HTML CSS and Javascript
 
 - No Framework 
 - Vanilla JavaScript
-- Many Plugins
-- jQuery For Plugins
-- UI/UX Sketches
-- Mind Mapping
-- My VS Code Extensions
 - No SASS 
 - No Pugjs
