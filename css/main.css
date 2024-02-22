@@ -10,6 +10,12 @@
   text-decoration: none;
   text-transform: capitalize;
 }
+/* container */
+.container {
+  width: 1170px;
+  padding: 0 15px;
+  margin: auto;
+}
 /* start settings box  */
 .settings-box {
   position: fixed;
@@ -176,3 +182,34 @@
   font-size: 20px;
 }
 /* end landing  */
+/* start about us */
+
+.about {
+  padding: 50px 0;
+  display: flex;
+}
+.about .container {
+  display: flex;
+}
+.about .info-box {
+  flex: 1;
+  padding: 30px;
+}
+.about .info-box h2 {
+  font-weight: bold;
+  font-size: 30px;
+  color: var(--main-color);
+  margin-bottom: 20px;
+}
+.about .info-box p {
+  line-height: 1.8;
+  color: #767676;
+}
+.about .img-box {
+  flex: 1;
+  text-align: center;
+}
+.about img {
+  width: 250px;
+}
+/* end about us */

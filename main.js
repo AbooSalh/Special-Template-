@@ -9,7 +9,6 @@ if (mainColor != null) {
     if (e.dataset.color == mainColor) {
       e.classList.add("active");
     }
-    
   });
 }
 //  background option
@@ -22,17 +21,17 @@ let randomImgLocal = localStorage.getItem("bg_option");
 if (randomImgLocal != null) {
   if (randomImgLocal == "true") {
     backgroundOpt = true;
-    randomImg()
-  }else{
+    randomImg();
+  } else {
     backgroundOpt = false;
   }
-  // remove active class 
+  // remove active class
   document.querySelectorAll(".option-box span").forEach((e) => {
     e.classList.remove("active");
   });
-  if(randomImgLocal == "true") {
+  if (randomImgLocal == "true") {
     document.querySelector(".option-box .yes").classList.add("active");
-  }else {
+  } else {
     document.querySelector(".option-box .no").classList.add("active");
   }
 }
@@ -71,6 +70,9 @@ colorsLi.forEach((li) => {
 });
 // switch random background
 const randomBg = document.querySelectorAll(".option-box:nth-child(3) span");
+// set the last background to the page to local
+let imgIndex = "01.jpg";
+let imgIndexLocal = localStorage.getItem("img_index");
 randomBg.forEach((span) => {
   console.log(span);
   span.addEventListener("click", (e) => {
@@ -83,10 +85,12 @@ randomBg.forEach((span) => {
       backgroundOpt = true;
       randomImg();
       localStorage.setItem("bg_option", true);
+      localStorage.setItem("img_index", "01.jpg");
     } else {
       backgroundOpt = false;
       clearInterval(bgInterval);
       localStorage.setItem("bg_option", false);
+      localStorage.setItem("img_index", imgIndex);
     }
   });
 });
@@ -111,6 +115,9 @@ function randomImg() {
       // get random nuumber
       let randomNumber = Math.floor(Math.random() * imgs.length);
       landingPage.style.backgroundImage = `url("../imgs/${imgs[randomNumber]}")`;
-    }, 1000);
+      imgIndex = imgs[randomNumber];
+    }, 10000);
   }
 }
+// add the last background to the page
+landingPage.style.backgroundImage = `url("../imgs/${imgIndexLocal}")`;
