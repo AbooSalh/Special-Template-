@@ -88,6 +88,28 @@
 .settings-box .option-box .colors-list li:nth-child(5) {
   background-color: #4caf50;
 }
+/* random option */
+.option-box .yes,
+.option-box .no {
+  width: 80px;
+  background-color: #333;
+  color: #fff;
+  margin-top: 20px;
+  display: inline-block;
+  padding: 3px 10px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.5;
+}
+.option-box:nth-child(3) span.active,
+.option-box:nth-child(3) span:hover {
+  opacity: 1;
+}
+.option-box .yes {
+}
+.option-box .no {
+}
 /* end settings box  */
 /* start landing */
 .landing {
@@ -130,6 +152,9 @@
 .landing .header ul li a:hover {
   color: var(--main-color);
   transition: color 0.3s;
+}
+.landing .header ul li a.active {
+  color: var(--main-color);
 }
 .landing .intro-text {
   position: absolute;
