@@ -121,3 +121,27 @@ function randomImg() {
 }
 // add the last background to the page
 landingPage.style.backgroundImage = `url("../imgs/${imgIndexLocal}")`;
+
+// select skills selector
+let ourSkills = document.querySelector(".skills");
+window.onscroll = function () {
+  // skills offset
+  let skillOffsetTop = ourSkills.offsetTop;
+  // outer hight
+  let skillsOuterHeight = ourSkills.offsetHeight;
+  // window hight
+  let windowHight = this.innerHeight;
+  // window scrollTop
+  let windowScrollTop = this.pageYOffset;
+  if (
+    windowScrollTop > skillOffsetTop - windowHight &&
+    windowScrollTop < skillOffsetTop + skillsOuterHeight
+  ) {
+    let allSkills = document.querySelectorAll(
+      ".skill-box .skill-progress span"
+    );
+    allSkills.forEach((skill) => {
+      skill.style.width = skill.dataset.progress;
+    });
+  }
+};

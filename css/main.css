@@ -12,7 +12,7 @@
 }
 /* container */
 .container {
-  width: 1170px;
+  /* width: 1170px; */
   padding: 0 15px;
   margin: auto;
 }
@@ -213,3 +213,50 @@
   width: 250px;
 }
 /* end about us */
+/* start skills  */
+.skills {
+  padding: 50px;
+  background-color: #eee;
+}
+.skills .container {
+  padding-left: 0;
+}
+.skills h2 {
+  font-weight: bold;
+  font-size: 30px;
+  color: var(--main-color);
+  margin: 50px 0;
+  text-align: center;
+}
+.skills .skill-box {
+  background-color: #fff;
+  display: flex;
+  padding: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.skills .name {
+  font-weight: bold;
+  width: 100px;
+  text-align: center;
+}
+.skills .skill-progress {
+  height: 30px;
+  width: calc(100% - 110px);
+  background-color: #f6f6f6;
+  border-radius: 6px;
+  position: relative;
+}
+.skills .skill-progress span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background-color: var(--main-color);
+  border-radius: 6px 0 0 6px;
+  transition: all 5s;
+}
+/* end skills  */
