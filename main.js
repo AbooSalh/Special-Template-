@@ -40,6 +40,15 @@ document.querySelector(".toggle-settings i").onclick = function () {
   this.classList.toggle("fa-spin");
   this.parentElement.classList.toggle("active");
   this.parentElement.parentElement.classList.toggle("open");
+  if (document.querySelector(".popup-overlay") == null) {
+    let overlay = document.createElement("div");
+    overlay.className = "popup-overlay";
+    // append the overlay to the body
+    document.body.appendChild(overlay);
+  } else {
+    document.querySelector(".popup-overlay").remove();
+    toggleGear();
+  }
 };
 // close toggle gear
 document.querySelector(".overlay").addEventListener("click", toggleGear);
@@ -202,22 +211,27 @@ ourGallery.forEach((img) => {
     // create close button
     let closeButton = document.createElement("span");
     // create close button txt
-    let closeButtonText = document.createTextNode("X")
+    let closeButtonText = document.createTextNode("X");
     // append txt to close button
     closeButton.appendChild(closeButtonText);
     // add class to close btn
     closeButton.className = "close-button";
     // add close button to popup box
-    popupBox.appendChild(closeButton)
+    popupBox.appendChild(closeButton);
   });
 });
 // close the popup box
-document.addEventListener("click",(e)=>{
-  if(e.target.className == "close-button" || e.target.className == "popup-overlay"){
-    document.querySelectorAll(".popup-box").forEach(ele =>{
+document.addEventListener("click", (e) => {
+  if (
+    e.target.className == "close-button" ||
+    e.target.className == "popup-overlay" ||
+    e.target.className == "toggle-settings"
+  ) {
+    document.querySelectorAll(".popup-box").forEach((ele) => {
       ele.remove();
-    })
+    });
     // remove overlay
-    document.querySelector(".popup-overlay").remove()
+    document.querySelector(".popup-overlay").remove();
+    toggleGear();
   }
-})
+});
