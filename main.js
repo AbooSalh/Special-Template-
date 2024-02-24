@@ -43,6 +43,9 @@ document.querySelector(".toggle-settings i").onclick = function () {
 };
 // close toggle gear
 document.querySelector(".overlay").addEventListener("click", toggleGear);
+document.querySelectorAll("section").forEach((e) => {
+  e.addEventListener("click", toggleGear);
+});
 document.querySelector(".header").addEventListener("click", toggleGear);
 function toggleGear() {
   document.querySelector(".toggle-settings").classList.remove("active");
@@ -143,5 +146,78 @@ window.onscroll = function () {
     allSkills.forEach((skill) => {
       skill.style.width = skill.dataset.progress;
     });
+
+    // the percentage
+    const skillsPercentage = document.querySelectorAll(
+      ".skill-progress .percentage"
+    );
+    skillsPercentage.forEach((skill) => {
+      currentPercent = skill.parentElement
+        .querySelector("span")
+        .dataset.progress.slice(0, 2);
+      displayNumbersWithDelay(currentPercent, skill, 40);
+    });
   }
 };
+
+function displayNumbersWithDelay(number, element, delay) {
+  let i = 1;
+  const intervalId = setInterval(() => {
+    if (i <= number) {
+      element.textContent = i + "%";
+      i++;
+    } else {
+      clearInterval(intervalId);
+    }
+  }, delay);
+}
+// create popup with the Image
+let ourGallery = document.querySelectorAll(".gallery img");
+ourGallery.forEach((img) => {
+  img.addEventListener("click", (e) => {
+    // create overlay element
+    let overlay = document.createElement("div");
+    overlay.className = "popup-overlay";
+    // append the overlay to the body
+    document.body.appendChild(overlay);
+    let popupBox = document.createElement("div");
+    // add class to the popup box
+    popupBox.className = "popup-box";
+    if (img.alt !== null) {
+      // create heading
+      let imgHeading = document.createElement("h3");
+      // create text for the heading
+      let imgText = document.createTextNode(img.alt);
+      imgHeading.appendChild(imgText);
+      // append the heading to the popup box
+      popupBox.appendChild(imgHeading);
+    }
+    // creat the img
+    let popupImg = document.createElement("img");
+    popupImg.src = img.src;
+    // add img to popup box
+    popupBox.appendChild(popupImg);
+    // append the popup box to body
+    document.body.appendChild(popupBox);
+    // create close button
+    let closeButton = document.createElement("span");
+    // create close button txt
+    let closeButtonText = document.createTextNode("X")
+    // append txt to close button
+    closeButton.appendChild(closeButtonText);
+    // add class to close btn
+    closeButton.className = "close-button";
+    // add close button to popup box
+    popupBox.appendChild(closeButton)
+  });
+});
+// close the popup box
+document.addEventListener("click",(e)=>{
+  if(e.target.className == "close-button" || e.target.className == "popup-overlay"){
+    document.querySelectorAll(".popup-box").forEach(ele =>{
+      ele.remove();
+    })
+    // remove overlay
+    document.querySelector(".popup-overlay").remove()
+  }
+})
