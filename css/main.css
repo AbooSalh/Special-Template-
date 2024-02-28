@@ -10,9 +10,12 @@
   text-decoration: none;
   text-transform: capitalize;
 }
+.h-zIndex {
+  z-index: 99999 !important;
+}
 /* container */
 .container {
-  /* width: 1170px; */
+  width: 1170px;
   padding: 0 15px;
   margin: auto;
 }
@@ -26,7 +29,7 @@
   min-height: 100vh;
   z-index: 1000;
   transition: left 0.3s;
-  z-index: 100000;
+  z-index: 999;
 }
 .settings-box .toggle-settings {
   position: absolute;
@@ -245,9 +248,8 @@
   background-color: #f6f6f6;
   border-radius: 6px;
   position: relative;
-
 }
-.skills .skill-progress .percentage{
+.skills .skill-progress .percentage {
   position: absolute;
   text-align: right;
   width: 99%;
@@ -274,7 +276,6 @@
 }
 .gallery .imgs-box {
   text-align: center;
-
 }
 .gallery .imgs-box img {
   width: 200px;
@@ -297,7 +298,7 @@
   position: fixed;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   background-color: #fff;
   border: 1px solid #ccc;
   padding: 20px;
@@ -325,7 +326,105 @@
   font-size: 20px;
   cursor: pointer;
   font-weight: bold;
-  font-family: Arial,Tahoma;
+  font-family: Arial, Tahoma;
   border-radius: 50%;
 }
 /* end gallery  */
+/* start timeline */
+.timeline {
+  padding: 50px 0;
+  background-color: #eee;
+}
+.timeline .timeline-content {
+  position: relative;
+  overflow: hidden;
+}
+.timeline .timeline-content::before {
+  content: "";
+  width: 2px;
+  height: 100%;
+  background-color: var(--main-color);
+  position: absolute;
+  left: 50%;
+  margin-left: -1px;
+  top: 0;
+}
+.timeline .timeline-content .year {
+  margin: 20px auto;
+  width: 50px;
+  background-color: var(--main-color);
+  position: relative;
+  z-index: 2;
+  border-radius: 4px;
+  text-align: center;
+  color: #fff;
+  padding: 2px 5px;
+}
+.timeline .timeline-content .left,
+.timeline .timeline-content .right {
+  width: calc(50% - 25px);
+  margin-bottom: 40px;
+  position: relative;
+}
+.timeline .timeline-content .left {
+  float: left;
+}
+.timeline .timeline-content .left::before,
+.timeline .timeline-content .right::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background-color: #fff;
+  border: 3px solid var(--main-color);
+  position: absolute;
+  border-radius: 50%;
+  top: 20px;
+}
+.timeline .timeline-content .left::before {
+  right: -35px;
+}
+.timeline .timeline-content .right::before {
+  left: -35px;
+}
+.timeline .timeline-content .right {
+  float: right;
+}
+.timeline .timeline-content .content {
+  padding: 20px;
+  background-color: white;
+}
+.timeline .timeline-content h3 {
+  font-weight: bold;
+  color: var(--main-color);
+  margin: 0 0 10px;
+}
+.timeline .timeline-content p {
+  color: #666;
+  line-height: 1.6;
+}
+.clear {
+  clear: both;
+}
+.timeline .timeline-content .left .content::before {
+  content: "";
+  border-style: solid;
+  border-width: 10px;
+  border-color: transparent transparent transparent #fff;
+  position: absolute;
+  height: 0;
+  width: 0;
+  right: -20px;
+  top: 20px;
+}
+.timeline .timeline-content .right .content::before {
+  content: "";
+  border-style: solid;
+  border-width: 10px;
+  border-color: transparent #fff transparent transparent;
+  position: absolute;
+  height: 0;
+  width: 0;
+  left: -20px;
+  top: 20px;
+}
+/* end timeline */

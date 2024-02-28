@@ -40,6 +40,7 @@ document.querySelector(".toggle-settings i").onclick = function () {
   this.classList.toggle("fa-spin");
   this.parentElement.classList.toggle("active");
   this.parentElement.parentElement.classList.toggle("open");
+  this.parentElement.parentElement.classList.toggle("h-zIndex");
   if (document.querySelector(".popup-overlay") == null) {
     let overlay = document.createElement("div");
     overlay.className = "popup-overlay";
@@ -231,6 +232,7 @@ document.addEventListener("click", (e) => {
       ele.remove();
     });
     // remove overlay
+    document.querySelector(".settings-box").classList.remove("h-zIndex");
     document.querySelector(".popup-overlay").remove();
     toggleGear();
   }
