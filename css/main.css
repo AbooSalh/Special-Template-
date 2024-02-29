@@ -116,10 +116,6 @@
 .option-box:nth-child(3) span:hover {
   opacity: 1;
 }
-.option-box .yes {
-}
-.option-box .no {
-}
 /* end settings box  */
 /* start nav bullets */
 .nav-bullets {

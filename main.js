@@ -73,12 +73,8 @@ colorsLi.forEach((li) => {
     );
     // set color on localStorage
     localStorage.setItem("color_option", e.target.dataset.color);
-    // remove active from all li
-    e.target.parentElement.querySelectorAll(".active").forEach((ele) => {
-      ele.classList.remove("active");
-    });
-    // add active class
-    e.target.classList.add("active");
+    // Active state handler
+    handleActive(e);
   });
 });
 // switch random background
@@ -89,11 +85,8 @@ let imgIndexLocal = localStorage.getItem("img_index");
 randomBg.forEach((span) => {
   console.log(span);
   span.addEventListener("click", (e) => {
-    e.target.parentElement.querySelectorAll(".active").forEach((ele) => {
-      ele.classList.remove("active");
-    });
-    // add active class
-    e.target.classList.add("active");
+    // Active state handler
+    handleActive(e);
     if (e.target.dataset.bolean == "true") {
       backgroundOpt = true;
       randomImg();
@@ -240,10 +233,26 @@ document.addEventListener("click", (e) => {
 
 // seclect all bullets
 const allBullets = document.querySelectorAll(".nav-bullets .bullet");
-allBullets.forEach((bullet) => {
-  bullet.addEventListener("click", (e) => {
-    document.querySelector(e.target.dataset.section).scrollIntoView({
-      behavior: "smooth",
+const allLinks = document.querySelectorAll(".landing ul li a");
+function scrollToSection(elements) {
+  elements.forEach((ele) => {
+    ele.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.querySelector(e.target.dataset.section).scrollIntoView({
+        behavior: "smooth",
+      });
     });
   });
-});
+}
+
+scrollToSection(allBullets);
+scrollToSection(allLinks);
+
+// handle active state
+function handleActive(ev) {
+  ev.target.parentElement.querySelectorAll(".active").forEach((ele) => {
+    ele.classList.remove("active");
+  });
+  // add active class
+  ev.target.classList.add("active");
+}
