@@ -121,6 +121,52 @@
 .option-box .no {
 }
 /* end settings box  */
+/* start nav bullets */
+.nav-bullets {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  z-index: 1;
+}
+.nav-bullets .bullet {
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--main-color);
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 10px auto;
+  position: relative;
+}
+.nav-bullets .tooltip {
+  background-color: var(--main-color);
+  width: 120px;
+  color: #fff;
+  position: absolute;
+  padding: 4px 10px;
+  right: 40px;
+  top: -6px;
+  display: none;
+}
+.nav-bullets .tooltip::after {
+  content: "";
+  border-style: solid;
+  border-width: 13px;
+  border-color: transparent transparent transparent var(--main-color);
+  position: absolute;
+  height: 0;
+  width: 0;
+  right: -26px;
+  top: 0%;
+  cursor: default;
+  text-align: center;
+  pointer-events: none;
+}
+.nav-bullets .bullet:hover .tooltip {
+  display: block;
+}
+/* end nav bullets */
 /* start landing */
 .landing {
   min-height: 100vh;
@@ -520,7 +566,6 @@
   float: left;
   border-radius: 50%;
   margin-right: 20px;
-
 }
 .testimonials .TM-box .person-info h4 {
   margin: 14px 0 5px;
