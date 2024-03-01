@@ -127,8 +127,11 @@ function randomImg() {
 }
 // add the last background to the page
 landingPage.style.backgroundImage = `url("../imgs/${imgIndexLocal}")`;
-
+if (imgIndexLocal == null) {
+  landingPage.style.backgroundImage = `url("../imgs/01.jpg")`;
+}
 // select skills selector
+let done = false;
 let ourSkills = document.querySelector(".skills");
 window.onscroll = function () {
   // skills offset
@@ -158,7 +161,7 @@ window.onscroll = function () {
       currentPercent = skill.parentElement
         .querySelector("span")
         .dataset.progress.slice(0, 2);
-      displayNumbersWithDelay(currentPercent, skill, 40);
+      // displayNumbersWithDelay(currentPercent, skill, 40);
     });
   }
 };
@@ -166,13 +169,15 @@ window.onscroll = function () {
 function displayNumbersWithDelay(number, element, delay) {
   let i = 1;
   const intervalId = setInterval(() => {
-    if (i <= number) {
+    if (i <= number && done == false) {
       element.textContent = i + "%";
       i++;
     } else {
       clearInterval(intervalId);
     }
   }, delay);
+
+  console.log(done);
 }
 // create popup with the Image
 let ourGallery = document.querySelectorAll(".gallery img");
@@ -230,7 +235,7 @@ document.addEventListener("click", (e) => {
     toggleGear();
   }
 });
-
+//
 // seclect all bullets
 const allBullets = document.querySelectorAll(".nav-bullets .bullet");
 const allLinks = document.querySelectorAll(".landing ul li a");
@@ -249,6 +254,41 @@ scrollToSection(allBullets);
 scrollToSection(allLinks);
 
 // handle active state
+
+let bulletSpan = document.querySelectorAll(".bullets-option span");
+let bulletContainer = document.querySelector(".nav-bullets");
+let bulletLocal = localStorage.getItem("bullets_option");
+if (bulletLocal != null) {
+  if (bulletLocal == "block") {
+    bulletContainer.style.display = "block";
+  } else {
+    bulletContainer.style.display = "none";
+  }
+  bulletSpan.forEach((e) => {
+    // remove active from all li
+    e.classList.remove("active");
+    // add active class
+    console.log(e.dataset.display);
+    if (e.dataset.display == bulletLocal) {
+      console.log(e);
+      e.classList.add("active");
+    }
+  });
+} else {
+  bulletSpan[0].classList.add("active");
+}
+bulletSpan.forEach((span) => {
+  span.addEventListener("click", (e) => {
+    if (span.dataset.display == "block") {
+      bulletContainer.style.display = "block";
+      localStorage.setItem("bullets_option", "block");
+    } else {
+      bulletContainer.style.display = "none";
+      localStorage.setItem("bullets_option", "none");
+    }
+    handleActive(e);
+  });
+});
 function handleActive(ev) {
   ev.target.parentElement.querySelectorAll(".active").forEach((ele) => {
     ele.classList.remove("active");
@@ -256,3 +296,30 @@ function handleActive(ev) {
   // add active class
   ev.target.classList.add("active");
 }
+
+// reset button
+document.querySelector(".reset-option").onclick = function () {
+  localStorage.clear();
+  window.location.reload();
+};
+
+// toggle menu
+let toggleBtn = document.querySelector(".toggle-menu");
+let tLinks = document.querySelector(".links");
+// tLinks.onclick = function (e) {
+//   e.stopPropagation();
+// };
+toggleBtn.onclick = function (e) {
+  e.stopPropagation();
+  this.classList.toggle("active");
+  tLinks.classList.toggle("open");
+};
+document.addEventListener("click", (e) => {
+  if (e.target.classList != toggleBtn && e.target != tLinks) {
+    if (tLinks.classList.contains("open")) {
+      toggleBtn.classList.toggle("active");
+      tLinks.classList.toggle("open");
+    }
+  }
+});
+randomImg();

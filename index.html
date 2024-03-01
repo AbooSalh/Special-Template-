@@ -39,6 +39,14 @@
             <span class="yes active" data-bolean="true">yes</span>
             <span class="no" data-bolean="false">no</span>
         </div>
+        <div class="option-box bullets-option">
+            <h4>Show bullets</h4>
+            <span class="yes active" data-display="block">yes</span>
+            <span class="no" data-display="none">no</span>
+        </div>
+        <button class="reset-option">
+            Reset option
+        </button>
     </div>
 
     <!-- end settings box -->
@@ -67,20 +75,26 @@
     <!-- start landing -->
     <section class="landing">
         <div class="overlay"></div>
-        <div class="contianer">
+        <div class="container">
             <div class="header">
                 <div class="logo">
                     special design
                 </div>
-                <ul>
-                    <li><a href="" class="active" data-section=".about">about</a></li>
-                    <li><a href="" data-section=".skills">skills</a></li>
-                    <li><a href="" data-section=".gallery">gallery</a></li>
-                    <li><a href="" data-section=".timeline">timeline</a></li>
-                    <li><a href="" data-section=".features">features</a></li>
-                    <li><a href="" data-section=".testimonials">testimonials</a></li>
-                </ul>
-
+                <div class="links-container">
+                    <ul class="links">
+                        <li class="left"><a href="" class="active" data-section=".about">about</a></li>
+                        <li class="left"><a href="" data-section=".skills">skills</a></li>
+                        <li class="left"><a href="" data-section=".gallery">gallery</a></li>
+                        <li><a href="" data-section=".timeline">timeline</a></li>
+                        <li><a href="" data-section=".features">features</a></li>
+                        <li><a href="" data-section=".testimonials">testimonials</a></li>
+                    </ul>
+                    <button class="toggle-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
             </div>
             <div class="intro-text">
                 <h1>we are <span>creative</span> agency</h1>
@@ -281,6 +295,31 @@
         <div class="clear"></div>
     </section>
     <!-- end testimonials  -->
+    <!-- start contact us -->
+    <section class="contact">
+        <div class="overlay"></div>
+        <div class="container">
+            <h2 class="s-heading">contact us</h2>
+            <form action="">
+                <div class="left">
+                    <input type="text" placeholder="Your name" name="username">
+                    <input type="number" placeholder="Your phone" name="phone">
+                    <input type="email" placeholder="Your email" name="email">
+                    <input type="text" placeholder="subject" name="subject">
+                </div>
+                <div class="right">
+                    <textarea name="message" placeholder="Your message"></textarea>
+                    <input type="submit" value="send">
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- end contact us -->
+    <!-- start footer -->
+    <footer>
+        Created by Ahmed M. Saleh
+    </footer>
+    <!-- end footer -->
 </body>
 <script src="main.js"></script>
 
